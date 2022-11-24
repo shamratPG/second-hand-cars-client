@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const menu = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/blog'>Blog</Link></li>
+        <li><Link to='/blogs'>Blog</Link></li>
         <li><Link to='/login'>Log In</Link></li>
         <li><Link to='/signup'>Sign Up</Link></li>
 
     </>
     return (
         <div className="">
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 max-w-[1220px] mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
 
@@ -38,7 +38,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <hr className='h-2 bg-gradient-to-r from-primary to-secondary' />
+            <hr className='h-1 bg-gradient-to-r from-primary to-secondary' />
         </div>
 
     );
