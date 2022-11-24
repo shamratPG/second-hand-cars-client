@@ -21,7 +21,7 @@ const Header = () => {
                         </label>
 
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Second-hand Cars</a>
+                    <Link className="btn btn-ghost normal-case text-xl">Second-hand Cars</Link>
                 </div>
                 <div className="navbar-end">
                     <ul className="menu menu-horizontal p-0 hidden lg:flex">
