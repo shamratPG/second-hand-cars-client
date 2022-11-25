@@ -8,16 +8,27 @@ import { AuthContext } from '../../Context/AuthProvider';
 const Login = () => {
 
     const { loginUser } = useContext(AuthContext);
+
+    // Error Message 
+    const [error, setError] = useState('')
+
+
     // Form Controls 
     const { register, handleSubmit, reset } = useForm();
     const handleLogin = data => {
         loginUser(data.email, data.password)
             .then(userCredential => {
                 console.log(userCredential);
-                reset()
+                setError('');
+                reset();
             })
-            .catch(error => console.error(error))
+            .catch(err => {
+                console.error(error)
+                setError(err.message)
+            })
     };
+
+
 
     // Show Password Features  
     const [passwordShown, setPasswordShown] = useState(false);
@@ -47,7 +58,12 @@ const Login = () => {
                     </label>
                 </div>
                 <Button>Log In</Button>
+
+                <span className='text-error block mt-2'>{error}</span>
+
                 <p className='mt-2'>Do not have account? <Link to='/signup' className='link'>Register here.</Link></p>
+
+
                 <hr className="my-8 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded " />
 
                 <ThirdPartyAuth></ThirdPartyAuth>
