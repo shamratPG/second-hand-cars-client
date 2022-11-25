@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button';
 import ThirdPartyAuth from '../../Components/ThirdPartyAuth';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -8,6 +8,11 @@ import { AuthContext } from '../../Context/AuthProvider';
 const Login = () => {
 
     const { loginUser } = useContext(AuthContext);
+
+    //navigate
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     // Error Message 
     const [error, setError] = useState('')
@@ -21,6 +26,7 @@ const Login = () => {
                 console.log(userCredential);
                 setError('');
                 reset();
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(error)

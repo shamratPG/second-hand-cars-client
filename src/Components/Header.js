@@ -15,7 +15,10 @@ const Header = () => {
                     <li className='font-semibold'><Link onClick={userLogOut}>Log Out</Link></li>
                 </>
                 :
-                <li className='font-semibold'><Link to='/login'>Log In</Link></li>
+                <>
+                    <li className='font-semibold'><Link to='/login'>Log In</Link></li>
+                    <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
+                </>
         }
 
     </>

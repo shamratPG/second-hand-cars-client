@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button';
 import ThirdPartyAuth from '../../Components/ThirdPartyAuth';
@@ -8,7 +7,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const Signup = () => {
 
-    const { registerUser, addUserInfo } = useContext(AuthContext);
+    const { registerUser, addUserInfo, saveUserDb } = useContext(AuthContext);
 
     //Navigate
     const navigate = useNavigate();
@@ -28,7 +27,8 @@ const Signup = () => {
                     .then(() => {
                         reset();
                         setError('');
-                        saveUser(data.name, data.email, data.role)
+                        saveUserDb(data.name, data.email, data.role);
+                        navigate('/')
                     })
                     .catch(err => {
                         setError(err.message);
@@ -41,21 +41,7 @@ const Signup = () => {
             })
     };
 
-    //Sending User data to DATABASE
-    const saveUser = (name, email, role) => {
-        const newUser = { name, email, role };
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: { "content-type": 'application/json' },
-            body: JSON.stringify(newUser)
-        })
-            .then(res => res.json())
-            .then(data => {
-                navigate('/');
-                console.log(data);
-                toast.success(`New ${role} Created`)
-            })
-    }
+
 
     // show password features
     const [passwordShown, setPasswordShown] = useState(false)
@@ -110,26 +96,6 @@ const Signup = () => {
                     </label>
                 </div>
 
-
-                {/* <div>
-                    <p>Please select what you want to be:</p>
-                    <div className="form-control">
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Buyer</span>
-                            <input type="radio" name="role" className="radio checked:bg-red-500" checked value="buyer"
-                                {...register("role", {
-                                    required: "Please select your role"
-                                })} />
-                        </label>
-                    </div>
-                    <div className="form-control">
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Seller</span>
-                            <input type="radio" name="role" className="radio checked:bg-blue-500" checked value="seller"
-                                {...register("role")} />
-                        </label>
-                    </div>
-                </div> */}
 
                 <Button>Sign Up</Button>
 
