@@ -18,10 +18,8 @@ const Signup = () => {
     // Form submit
     const { register, handleSubmit, reset } = useForm();
     const handleSignup = data => {
-        console.log(data.name, data.email, data.password, data.role)
         registerUser(data.email, data.password)
             .then(userCredential => {
-                console.log(userCredential)
                 setError('');
                 addUserInfo(data.name)
                     .then(() => {

@@ -23,7 +23,6 @@ const Login = () => {
     const handleLogin = data => {
         loginUser(data.email, data.password)
             .then(userCredential => {
-                console.log(userCredential);
                 setError('');
                 reset();
                 navigate(from, { replace: true });

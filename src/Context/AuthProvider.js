@@ -11,7 +11,6 @@ const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const [alreadyUser, setAlreadyUser] = useState(false);
 
 
     // Sign Up 
@@ -53,34 +52,21 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    // Check is already user 
+    const [info, setInfo] = useState(false)
+    const userInfo = (email) => {
+        setInfo(true)
+        fetch(`http://localhost:5000/users/${email}`)
+            .then(res => res.json())
+            .then((data) => {
+                setInfo(true);
+            })
+        return info
+    }
 
     //Sending User data to DATABASE
     const saveUserDb = (name, email, role) => {
         const newUser = { name, email, role };
-        // fetch(`http://localhost:5000/users/${email}`)
-        //     .then(res => res.json())
-        //     .then((data) => {
-        //         data.email ? setAlreadyUser(true) : setAlreadyUser(false)
-        //         console.log(data.email)
-
-        //     })
-        // if (alreadyUser) {
-        //     return toast('user Already exist');
-        // }
-
-        // useEffect(() => {
-        //     fetch('http://localhost:5000/users', {
-        //         method: 'POST',
-        //         headers: { "content-type": 'application/json' },
-        //         body: JSON.stringify(newUser)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             console.log(data);
-        //             toast.success(`New ${role} Created`)
-        //         })
-        // }, [])
-
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: { "content-type": 'application/json' },
@@ -88,7 +74,6 @@ const AuthProvider = ({ children }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 toast.success(`New ${role} Created`)
             })
     }
@@ -98,6 +83,7 @@ const AuthProvider = ({ children }) => {
         addUserInfo,
         loginUser,
         googleLogIn,
+        userInfo,
         saveUserDb,
         logOut,
         loading,
