@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 
 const AllSellers = () => {
 
-    const [allSellers, setAllSellers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users?role=seller')
-            .then(res => res.json())
-            .then(data => {
-                setAllSellers(data);
-            })
-    }, [])
+    const { isLoading, data: allSellers = [] } = useQuery({
+        queryKey: ["users", "seller"],
+        queryFn: () =>
+            fetch(`http://localhost:5000/users/seller`).then(res =>
+                res.json()
+            )
+    })
+    if (isLoading) {
+        return <div className='h-[100vh] flex justify-center items-center'>
+            <progress className="progress w-56"></progress>
+        </div>
+    }
     return (
         <div>
             <h2 className='text-center my-8 text-3xl font-semibold'>All Seller</h2>
@@ -29,7 +34,6 @@ const AllSellers = () => {
                         {
                             allSellers.map((buyer, index) =>
                                 <tr key={buyer._id}>
-                                    <th>{index + 1}</th>
                                     <td>{buyer.name}</td>
                                     <td>{buyer.email}</td>
                                     <td>{buyer.role}</td>

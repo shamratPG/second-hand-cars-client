@@ -8,7 +8,6 @@ const CategoryPage = () => {
 
     const categoryId = products[0].categoryId;
     let categoryName;
-    console.log(products[0]);
     if (categoryId === '1a') {
         categoryName = 'SUV'
     }

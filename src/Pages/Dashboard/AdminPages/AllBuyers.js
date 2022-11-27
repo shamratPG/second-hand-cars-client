@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 
 const AllBuyers = () => {
 
-    const [allBuyers, setAllBuyers] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users?role=buyer')
-            .then(res => res.json())
-            .then(data => {
-                setAllBuyers(data);
-            })
-    }, [])
+
+    const { isLoading, data: allBuyers = [] } = useQuery({
+        queryKey: ["users", "buyer"],
+        queryFn: () =>
+            fetch(`http://localhost:5000/users/buyer`).then(res =>
+                res.json()
+            )
+    })
+    if (isLoading) {
+        return <div className='h-[100vh] flex justify-center items-center'>
+            <progress className="progress w-56"></progress>
+        </div>
+    }
+
+
     return (
         <div>
             <h2 className='text-center my-8 text-3xl font-semibold'>All Buyer</h2>

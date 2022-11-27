@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../../Components/Footer';
@@ -23,15 +24,31 @@ const DashboardLayout = () => {
 
     let menu = buyerMenu;
 
-    const [userInfo, setUserInfo] = useState({})
     const { user } = useContext(AuthContext);
-    useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
-            .then(res => res.json())
-            .then((data) => {
-                setUserInfo(data)
-            })
-    }, [user.email])
+
+    const { isLoading, data: userInfo = [] } = useQuery({
+        queryKey: ["products", user.email],
+        queryFn: () =>
+            fetch(`http://localhost:5000/users/${user.email}`).then(res =>
+                res.json()
+            )
+    })
+    if (isLoading) {
+        return <div className='h-[100vh] flex justify-center items-center'>
+            <progress className="progress w-56"></progress>
+        </div>
+    }
+    console.log(userInfo);
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/users/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then((data) => {
+    //             setUserInfo(data)
+    //         })
+    // }, [user.email])
+
+
     if (userInfo.role === 'seller') {
         menu = sellerMenu
     } else if (userInfo.role === 'admin') {

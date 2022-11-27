@@ -1,18 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProducts = () => {
 
     const { user } = useContext(AuthContext);
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/products/${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-                console.log(data)
-            })
-    }, [])
+
+    const { isLoading, data: products = [] } = useQuery({
+        queryKey: ["products", user.email],
+        queryFn: () =>
+            fetch(`http://localhost:5000/products/${user.email}`).then(res =>
+                res.json()
+            )
+    })
+    if (isLoading) {
+        return <div className='h-[100vh] flex justify-center items-center'>
+            <progress className="progress w-56"></progress>
+        </div>
+    }
+
     return (
         <div>
             <h2 className='text-center my-8 text-3xl font-semibold'>My Products</h2>
