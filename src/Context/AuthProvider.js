@@ -74,7 +74,8 @@ const AuthProvider = ({ children }) => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success(`New ${role} Created`)
+                data.acknowledged &&
+                    toast.success(`New ${role} Created`);
             })
     }
 

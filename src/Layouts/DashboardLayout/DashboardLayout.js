@@ -45,14 +45,14 @@ const DashboardLayout = () => {
 
 
             <div className="drawer drawer-mobile max-w-[1220px] mx-auto">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <input id="side-menu" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    {/* <label htmlFor="side-menu" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>  */}
 
                 </div>
                 <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <label htmlFor="side-menu" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         {menu}
                     </ul>
