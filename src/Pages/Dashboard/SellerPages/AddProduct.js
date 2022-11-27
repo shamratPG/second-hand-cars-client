@@ -1,7 +1,7 @@
+import { format } from 'date-fns';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 import Button from '../../../Components/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -30,7 +30,8 @@ const AddProduct = () => {
             .then(imgData => {
                 if (imgData.success) {
                     data.image = imgData.data.url;
-                    const productData = { ...data, sellerEmail: user.email, status: 'unsold' }
+                    const date = new Date();
+                    const productData = { ...data, sellerEmail: user.email, status: 'unsold', postedDate: format(date, 'PP') }
                     console.log(productData)
 
                     //Save Product info in db
