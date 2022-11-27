@@ -28,14 +28,13 @@ const MyProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((product, index) =>
+                            products.map((product) =>
                                 <tr key={product._id}>
                                     <td>
                                         <div className="flex items-center space-x-3">
 
                                             <div>
                                                 <div className="font-bold">{product.carName}</div>
-                                                <div className="text-sm opacity-50">{product.category}</div>
                                             </div>
                                         </div>
                                     </td>

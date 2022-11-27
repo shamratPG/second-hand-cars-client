@@ -9,10 +9,10 @@ import pickUp from '../../../../Assets/images/other-image/pickUp.jpg';
 const Categories = () => {
 
     const categories = [
-        { name: 'Sedan', img: sedan, value: 'sedan' },
-        { name: 'SUV', img: suv, value: 'suv' },
-        { name: 'Pick Up Truck', img: pickUp, value: 'pickUp' },
-        { name: 'Luxury Car', img: luxury, value: 'luxuryCar' }
+        { name: 'Sedan', img: sedan, categoryId: '2b' },
+        { name: 'SUV', img: suv, categoryId: '1a' },
+        { name: 'Pick Up Truck', img: pickUp, categoryId: '3c' },
+        { name: 'Luxury Car', img: luxury, categoryId: '4d' }
     ]
 
     return (

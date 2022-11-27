@@ -39,9 +39,9 @@ const router = createBrowserRouter([
                 element: <Signup></Signup>
             },
             {
-                path: '/category/:value',
+                path: '/category/:categoryId',
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/products/?category=${params.value}`)
+                    return fetch(`http://localhost:5000/products/?categoryId=${params.categoryId}`)
                 },
                 element: <CategoryPage></CategoryPage>,
             },

@@ -21,7 +21,7 @@ const AddProduct = () => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageApiKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imageApiKey}`
         fetch(url, {
             method: 'POST',
             body: formData
@@ -75,12 +75,12 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Type of Car:</span>
                     </label>
-                    <select className="select select-bordered select-primary" {...register("category", { required: true })} defaultValue="category">
-                        <option disabled value='category'>Category</option>
-                        <option value="suv">SUV</option>
-                        <option value="sedan">Sedan</option>
-                        <option value="pickUp">Pick up Truck</option>
-                        <option value="luxuryCar">Luxury Car</option>
+                    <select className="select select-bordered select-primary" {...register("categoryId", { required: true })} defaultValue="categoryId">
+                        <option disabled value='categoryId'>Category</option>
+                        <option value="1a">SUV</option>
+                        <option value="2b">Sedan</option>
+                        <option value="3c">Pick up Truck</option>
+                        <option value="4d">Luxury Car</option>
                     </select>
                 </div>
 
