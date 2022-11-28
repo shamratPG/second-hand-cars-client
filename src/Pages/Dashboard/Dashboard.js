@@ -13,7 +13,6 @@ const Dashboard = () => {
                 setUserDbInfo(data);
             })
     }, [user.email])
-    console.log(userDbInfo)
 
     return (
 

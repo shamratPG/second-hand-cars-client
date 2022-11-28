@@ -36,7 +36,7 @@ const MyProducts = () => {
                             <th>Car Name</th>
                             <th>Posted On</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

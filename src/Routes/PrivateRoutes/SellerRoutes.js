@@ -18,6 +18,10 @@ const SellerRoutes = ({ children }) => {
         return children;
     }
 
+    if (user && role === 'admin') {
+        return children;
+    }
+
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import AuthProvider from '../../Context/AuthProvider';
+import { AuthContext } from '../../Context/AuthProvider';
 import useRole from '../../hooks/useRole';
 
 const AdminRoutes = ({ children }) => {
-    const { user, loading } = useContext(AuthProvider);
+    const { user, loading } = useContext(AuthContext);
     const [role, isRoleLoading] = useRole(user?.email);
     const location = useLocation();
 

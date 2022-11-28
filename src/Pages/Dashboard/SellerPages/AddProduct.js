@@ -2,19 +2,17 @@ import { format } from 'date-fns';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProduct = () => {
 
     const [error, setError] = useState('');
-
     const { user } = useContext(AuthContext);
-
     const imageApiKey = process.env.REACT_APP_imagebb;
-
     const { register, handleSubmit, reset } = useForm();
-
+    const navigate = useNavigate();
 
     const handleProductSubmit = data => {
         //Send image to the server
@@ -44,7 +42,8 @@ const AddProduct = () => {
                         .then(res => res.json())
                         .then(result => {
                             toast.success(`${data.carName} is added successfully`);
-                            reset()
+                            reset();
+                            navigate('/dashboard/myProducts')
                         })
                 }
             })
@@ -65,16 +64,15 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Car Name & Model</span>
                     </label>
-                    <input name='carName' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("carName", { required: true })} />
+                    <input name='carName' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("carName")} required />
                 </div>
 
                 {/* Type of Car:  */}
                 <div className="form-control w-full">
                     <label className="label">
-                        <span className="label-text">Type of Car:</span>
+                        <span className="label-text">Category Of Car:</span>
                     </label>
-                    <select className="select select-bordered select-primary" {...register("categoryId", { required: true })} defaultValue="categoryId">
-                        <option disabled value='categoryId'>Category</option>
+                    <select className="select select-bordered select-primary" {...register("categoryId")} required defaultValue='2b'>
                         <option value="1a">SUV</option>
                         <option value="2b">Sedan</option>
                         <option value="3c">Pick up Truck</option>
@@ -88,8 +86,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Select Car's Condition</span>
                     </label>
-                    <select className="select select-bordered select-primary" {...register("condition", { required: true })} defaultValue="condition">
-                        <option disabled value='condition'>Condition</option>
+                    <select className="select select-bordered select-primary" {...register("condition")} required defaultValue="good">
                         <option value='excellent'>Excellent</option>
                         <option value='good'>Good</option>
                         <option value='fair'>Fair</option>
@@ -101,7 +98,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Year of Purchase</span>
                     </label>
-                    <input name='year' type="number" placeholder="Year" className="input input-bordered input-primary w-full" {...register("year", { required: true })} />
+                    <input name='year' type="number" placeholder="Year" className="input input-bordered input-primary w-full" {...register("year")} required />
                 </div>
 
                 {/* Original Price  */}
@@ -109,7 +106,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Original Price</span>
                     </label>
-                    <input name='originalPrice' type="number" placeholder="$$$" className="input input-bordered input-primary w-full" {...register("originalPrice", { required: true })} />
+                    <input name='originalPrice' type="number" placeholder="$$$" className="input input-bordered input-primary w-full" {...register("originalPrice")} required />
                 </div>
 
                 {/* Resale Price  */}
@@ -117,7 +114,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Resale Price</span>
                     </label>
-                    <input name='resalePrice' type="number" placeholder="$$$" className="input input-bordered input-primary w-full" {...register("resalePrice", { required: true })} />
+                    <input name='resalePrice' type="number" placeholder="$$$" className="input input-bordered input-primary w-full" {...register("resalePrice")} required />
                 </div>
 
                 {/* Mobile Number  */}
@@ -125,7 +122,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Mobile Number</span>
                     </label>
-                    <input name='sellerPhone' type="tel" placeholder="+880 1XXX NNNNNN" className="input input-bordered input-primary w-full" {...register("sellerPhone", { required: true })} />
+                    <input name='sellerPhone' type="tel" placeholder="+880 1XXX NNNNNN" className="input input-bordered input-primary w-full" {...register("sellerPhone")} required />
                 </div>
 
                 {/* Location */}
@@ -133,7 +130,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Location</span>
                     </label>
-                    <input name='sellerLocation' type="text" placeholder="Your Location" className="input input-bordered input-primary w-full" {...register("sellerLocation", { required: true })} />
+                    <input name='sellerLocation' type="text" placeholder="Your Location" className="input input-bordered input-primary w-full" {...register("sellerLocation")} required />
                 </div>
 
                 {/* Image */}
@@ -141,7 +138,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text capitalize">Upload a proper Image of your car</span>
                     </label>
-                    <input name='image' type="file" placeholder="Type here" className="w-full" {...register("image", { required: true })} />
+                    <input name='image' type="file" placeholder="Type here" className="w-full" {...register("image")} required />
                 </div>
 
                 {/* Description  */}
@@ -149,7 +146,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Car Description</span>
                     </label>
-                    <textarea className="textarea textarea-bordered textarea-primary h-24" placeholder="Write Your Car's Details" {...register("description", { required: true })}></textarea>
+                    <textarea className="textarea textarea-bordered textarea-primary h-24" placeholder="Write Your Car's Details" {...register("description")} required></textarea>
                 </div>
 
 
