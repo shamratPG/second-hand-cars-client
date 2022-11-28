@@ -5,7 +5,7 @@ import React from 'react';
 const ProductCard = ({ product, setSelectedProduct }) => {
 
     const { image, sellerLocation, carName, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
-    console.log(product)
+
 
     const date = new Date();
     const yearUsed = date.getFullYear() - year
