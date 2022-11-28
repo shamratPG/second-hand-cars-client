@@ -52,17 +52,6 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    // Check is already user 
-    const [info, setInfo] = useState(false)
-    const userInfo = (email) => {
-        setInfo(true)
-        fetch(`http://localhost:5000/users/${email}`)
-            .then(res => res.json())
-            .then((data) => {
-                setInfo(true);
-            })
-        return info
-    }
 
     //Sending User data to DATABASE
     const saveUserDb = (name, email, role) => {
@@ -84,7 +73,6 @@ const AuthProvider = ({ children }) => {
         addUserInfo,
         loginUser,
         googleLogIn,
-        userInfo,
         saveUserDb,
         logOut,
         loading,

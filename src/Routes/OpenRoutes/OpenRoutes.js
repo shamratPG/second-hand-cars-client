@@ -15,7 +15,9 @@ import MyProducts from "../../Pages/Dashboard/SellerPages/MyProducts";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Signup from "../../Pages/Signup/Signup";
+import AdminRoutes from "../PrivateRoutes/AdminRoutes";
 import PrivateRoute from "../PrivateRoutes/PrivateRoutes";
+import SellerRoutes from "../PrivateRoutes/SellerRoutes";
 
 const router = createBrowserRouter([
     {
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
                 loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/products/?categoryId=${params.categoryId}`)
                 },
-                element: <CategoryPage></CategoryPage>,
+                element: <PrivateRoute><CategoryPage></CategoryPage></PrivateRoute>,
             },
         ]
     },
@@ -57,31 +59,31 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoutes><MyProducts></MyProducts></SellerRoutes>
             },
             {
                 path: '/dashboard/myBuyers',
-                element: <MyBuyers></MyBuyers>
+                element: <SellerRoutes><MyBuyers></MyBuyers></SellerRoutes>
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoutes><AddProduct></AddProduct></SellerRoutes>
             },
             {
                 path: '/dashboard/myOrders',
-                element: <MyOrders></MyOrders>
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
             {
                 path: '/dashboard/allBuyer',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
             },
             {
                 path: '/dashboard/allSeller',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoutes><AllSellers></AllSellers></AdminRoutes>
             },
             {
                 path: '/dashboard/ReportedItems',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
         ]
     }
