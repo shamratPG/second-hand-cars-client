@@ -17,6 +17,7 @@ const Signup = () => {
 
     // Form submit
     const { register, handleSubmit, reset } = useForm();
+
     const handleSignup = data => {
         registerUser(data.email, data.password)
             .then(userCredential => {

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal/BookingModal';
 import ProductCard from './ProductCard/ProductCard';
 
 const CategoryPage = () => {
     const products = useLoaderData();
+    const [selectedProduct, setSelectedProduct] = useState({});
 
 
     const categoryId = products[0].categoryId;
@@ -27,9 +29,10 @@ const CategoryPage = () => {
             <h2 className="text-3xl text-center my-4">All Cars Under Category: <span className="text-secondary font-semibold">{categoryName}</span> </h2>
             <div className="grid grid-cols-1 gap-6 mb-16">
                 {
-                    products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
+                    products.map(product => <ProductCard key={product._id} product={product} setSelectedProduct={setSelectedProduct}></ProductCard>)
                 }
             </div>
+            <BookingModal selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct}></BookingModal>
         </div>
     );
 };

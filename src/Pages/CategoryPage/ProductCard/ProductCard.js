@@ -1,15 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { FaCheckCircle } from 'react-icons/fa';
 import React, { useState } from 'react';
-import BookingModal from '../BookingModal/BookingModal';
+import Button from '../../../Components/Button';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setSelectedProduct }) => {
 
     const { _id, image, carName, sellerLocation, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
-
-
-    const [readyToBook, setReadyToBook] = useState({});
-
 
     const { isLoading, data: sellerData = [] } = useQuery({
         queryKey: ["users", sellerEmail],
@@ -51,7 +47,7 @@ const ProductCard = ({ product }) => {
                     }
                 </div>
                 <div className="absolute bottom-4 right-4">
-                    <Button className="btn btn-primary">Book Now</Button>
+                    <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="btn bg-gradient-to-r from-primary to-accent text-white">Book Now</label>
                 </div>
             </div>
         </div>
