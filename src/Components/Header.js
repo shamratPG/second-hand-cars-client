@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../Context/AuthProvider';
 
 const Header = () => {
@@ -13,6 +14,10 @@ const Header = () => {
                 <>
                     <li className='font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
                     <li className='font-semibold'><Link onClick={userLogOut}>Log Out</Link></li>
+                    <Link className='font-semibold flex items-center text-primary pl-3' to="/dashboard">
+                        <FaUser></FaUser>
+                        <p className='pl-1'>{user.displayName}</p>
+                    </Link>
                 </>
                 :
                 <>

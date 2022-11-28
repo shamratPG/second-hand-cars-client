@@ -1,11 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import { FaCheckCircle } from 'react-icons/fa';
-import React, { useState } from 'react';
-import Button from '../../../Components/Button';
+import { FaCheckCircle, FaMapMarkerAlt, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa';
+import React from 'react';
 
 const ProductCard = ({ product, setSelectedProduct }) => {
 
-    const { _id, image, carName, sellerLocation, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
+    const { image, sellerLocation, carName, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
+    console.log(product)
+
+    const date = new Date();
+    const yearUsed = date.getFullYear() - year
+
+
 
     const { isLoading, data: sellerData = [] } = useQuery({
         queryKey: ["users", sellerEmail],
@@ -19,18 +24,28 @@ const ProductCard = ({ product, setSelectedProduct }) => {
             <progress className="progress w-56"></progress>
         </div>
     }
-    // picture, name, location, resale price, original price, years of use, the time when it got posted, the seller's name; if the seller is verified, there will be a blue tick next to their name and a Book now button
-
-
 
     return (
-        <div className="grid grid-cols-3 gap-6 border shadow-lg rounded">
-            <div className='col-span-3 md:col-span-1'>
+        <div className="grid grid-cols-5 gap-6 border shadow-lg rounded">
+            <div className='col-span-5 md:col-span-2'>
                 <img className='w-full h-full' src={image} alt="Movie" />
             </div>
-            <div className="col-span-3 md:col-span-2 p-4 h-full relative">
+            <div className="col-span-5 md:col-span-3 p-4 h-full relative">
                 <div>
-                    <h2 className="text-lg font-semibold ">{carName}</h2>
+                    <h2 className="text-lg font-semibold mb-2">{carName}</h2>
+                    <span className="text-sm flex items-center">
+                        <FaMapMarkerAlt className='text-blue-600 pr-1 text-lg'></FaMapMarkerAlt>
+                        {sellerLocation}
+                    </span>
+                    <span className="text-sm flex items-center">
+                        <FaRegClock className='text-blue-600 pr-1 text-lg'></FaRegClock>
+                        {`${yearUsed} Year${yearUsed > 1 ? 's' : ''} Used`}
+                    </span>
+                    <span className="text-sm flex items-center">
+                        <FaRegCalendarAlt className='text-blue-600 pr-1 text-lg'></FaRegCalendarAlt>
+                        {`Posted On: ${postedDate}`}
+                    </span>
+
                     <hr className='h-1 bg-gradient-to-r from-primary to-secondary max-w-xs my-2' />
                 </div>
 
@@ -41,7 +56,9 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                     <p>{description.slice(0, 100)}...</p>
                 </div>
                 <div className='absolute bottom-4 flex items-center'>
-                    <span className='font-semibold text-secondary pr-2'>{sellerData.name}</span>
+                    <span className='font-semibold text-secondary pr-2'>
+                        <span className='text-neutral'>Seller: </span>{sellerData.name}
+                    </span>
                     {
                         sellerData.verified && <FaCheckCircle className='text-blue-600'></FaCheckCircle>
                     }
