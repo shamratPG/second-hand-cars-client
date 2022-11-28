@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProducts = () => {
@@ -7,18 +8,24 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
     const { isLoading, data: products = [] } = useQuery({
-        queryKey: ["products", user.email],
+        queryKey: [user.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/products/${user.email}`).then(res =>
-                res.json()
-            )
+            fetch(`http://localhost:5000/products/${user.email}`)
+                .then(res =>
+                    res.json()
+                )
     })
     if (isLoading) {
-        return <div className='h-[100vh] flex justify-center items-center'>
+        return <div className='h-[90vh] flex justify-center items-center'>
             <progress className="progress w-56"></progress>
         </div>
     }
 
+    if (!products.length) {
+        return <div className='h-[90vh] flex justify-center items-center'>
+            <p className="text-3xl font-semibold">You have no product listed. <Link className="text-secondary" to="/dashboard/addProduct">Add new products .</Link></p>
+        </div>
+    }
     return (
         <div>
             <h2 className='text-center my-8 text-3xl font-semibold'>My Products</h2>

@@ -38,7 +38,6 @@ const DashboardLayout = () => {
             <progress className="progress w-56"></progress>
         </div>
     }
-    console.log(userInfo);
 
     // useEffect(() => {
     //     fetch(`http://localhost:5000/users/${user?.email}`)

@@ -32,7 +32,6 @@ const AddProduct = () => {
                     data.image = imgData.data.url;
                     const date = new Date();
                     const productData = { ...data, sellerEmail: user.email, status: 'unsold', postedDate: format(date, 'PP') }
-                    console.log(productData)
 
                     //Save Product info in db
                     fetch('http://localhost:5000/products', {
@@ -44,7 +43,6 @@ const AddProduct = () => {
                     })
                         .then(res => res.json())
                         .then(result => {
-                            console.log(result);
                             toast.success(`${data.carName} is added successfully`);
                             reset()
                         })

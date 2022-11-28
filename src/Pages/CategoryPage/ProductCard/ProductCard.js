@@ -1,10 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { FaRegCheckCircle, FaCheckCircle } from 'react-icons/fa';
-import React from 'react';
-import Button from '../../../Components/Button';
+import { FaCheckCircle } from 'react-icons/fa';
+import React, { useState } from 'react';
+import BookingModal from '../BookingModal/BookingModal';
 
 const ProductCard = ({ product }) => {
-    const { image, carName, sellerLocation, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
+
+    const { _id, image, carName, sellerLocation, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
+
+
+    const [readyToBook, setReadyToBook] = useState({});
+
 
     const { isLoading, data: sellerData = [] } = useQuery({
         queryKey: ["users", sellerEmail],
@@ -13,7 +18,6 @@ const ProductCard = ({ product }) => {
                 res.json()
             )
     })
-    console.log(image)
     if (isLoading) {
         return <div className='h-[100vh] flex justify-center items-center'>
             <progress className="progress w-56"></progress>
@@ -34,7 +38,7 @@ const ProductCard = ({ product }) => {
                     <hr className='h-1 bg-gradient-to-r from-primary to-secondary max-w-xs my-2' />
                 </div>
 
-                <div className='pb-12'>
+                <div className='pb-16'>
                     <p className='font-bold text-lg'>Original Price: <span className='text-xl text-accent'>${originalPrice}</span></p>
 
                     <p className='font-bold text-lg'>Resale Price: <span className='text-xl text-primary'>${resalePrice}</span></p>
@@ -49,7 +53,6 @@ const ProductCard = ({ product }) => {
                 <div className="absolute bottom-4 right-4">
                     <Button className="btn btn-primary">Book Now</Button>
                 </div>
-
             </div>
         </div>
 
