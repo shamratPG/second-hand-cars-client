@@ -10,7 +10,6 @@ const DashboardLayout = () => {
 
     const sellerMenu = <>
         <li><Link to="/dashboard/myProducts">My Products</Link></li>
-        <li><Link to="/dashboard/myBuyers">My Buyers</Link></li>
         <li><Link to="/dashboard/addProduct">Add A Product</Link></li>
     </>
     const buyerMenu = <>

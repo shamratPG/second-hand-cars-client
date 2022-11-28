@@ -10,8 +10,6 @@ const ProductCard = ({ product, setSelectedProduct }) => {
     const date = new Date();
     const yearUsed = date.getFullYear() - year
 
-
-
     const { isLoading, data: sellerData = [] } = useQuery({
         queryKey: ["users", sellerEmail],
         queryFn: () =>
