@@ -48,13 +48,13 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name='email' type="email" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("email", { required: true })} />
+                    <input name='email' type="email" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("email")} required />
                 </div>
                 <div className="form-control w-full my-2">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name='password' type={`${passwordShown ? 'text' : 'password'}`} placeholder="Type here" className="input input-bordered input-primary w-full" {...register("password", { required: true })} />
+                    <input name='password' type={`${passwordShown ? 'text' : 'password'}`} placeholder="Type here" className="input input-bordered input-primary w-full" {...register("password")} required />
                     <label className="label">
                         <span className="label-text-alt flex items-center">
                             <input onChange={showPassword} id='showPassword' type="checkbox" className="checkbox" />

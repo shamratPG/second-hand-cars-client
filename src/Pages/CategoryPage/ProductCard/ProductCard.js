@@ -26,7 +26,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
     return (
         <div id={_id} className="grid grid-cols-5 gap-6 border shadow-lg rounded">
             <div className='col-span-5 md:col-span-2'>
-                <img className='w-full h-full' src={image} alt="Movie" />
+                <img className='w-full h-full' src={image} alt={carName} />
             </div>
             <div className="col-span-5 md:col-span-3 p-4 h-full relative">
                 <div>

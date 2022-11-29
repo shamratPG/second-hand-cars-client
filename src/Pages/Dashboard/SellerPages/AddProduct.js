@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,6 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProduct = () => {
 
-    const [error, setError] = useState('');
     const { user } = useContext(AuthContext);
     const imageApiKey = process.env.REACT_APP_imagebb;
     const { register, handleSubmit, reset } = useForm();
@@ -54,7 +53,7 @@ const AddProduct = () => {
 
 
     return (
-        <div className='container mx-auto max-w-xl'>
+        <div className='container mx-auto max-w-xl mb-60'>
             <form onSubmit={handleSubmit(handleProductSubmit)} className='w-full border border-1 p-6 shadow-lg rounded my-8'>
                 <h2 className="text-3xl mb-4">Add New Product</h2>
 
@@ -151,8 +150,6 @@ const AddProduct = () => {
 
 
                 <Button>Submit</Button>
-
-                <span className='text-error block mt-2'>{error}</span>
 
                 <hr className="my-8 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded " />
 

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
@@ -18,7 +18,7 @@ const DashboardLayout = () => {
     const adminMenu = <>
         <li><Link to="/dashboard/allBuyer">All Buyer</Link></li>
         <li><Link to="/dashboard/allSeller">All Seller</Link></li>
-        <li><Link to="/dashboard/ReportedItems">Reported Items</Link></li>
+        <li><Link to="/dashboard/allUsers">All Users</Link></li>
     </>
 
     let menu = buyerMenu;
@@ -58,8 +58,7 @@ const DashboardLayout = () => {
         <div>
             <Header></Header>
 
-
-            <div className="drawer drawer-mobile max-w-[1220px] mx-auto">
+            <div className="drawer drawer-mobile max-w-[1220px] mx-auto h-full">
                 <input id="side-menu" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>

@@ -4,9 +4,9 @@ import toast from 'react-hot-toast';
 import Button from '../../../Components/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
 
-const BookingModal = ({ selectedProduct, setSelectedProduct }) => {
+const BookingModal = ({ selectedProduct }) => {
 
-    const { _id, image, carName, sellerLocation, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = selectedProduct;
+    const { _id, carName, resalePrice, sellerEmail } = selectedProduct;
 
     const { user } = useContext(AuthContext);
 
@@ -51,7 +51,7 @@ const BookingModal = ({ selectedProduct, setSelectedProduct }) => {
 
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
 
-                        <input name="phone" type="number" placeholder="Your Phone Number" className="input w-full input-bordered" {...register("buyerPhone", { required: true })} />
+                        <input name="phone" type="tel" placeholder="Your Phone Number" className="input w-full input-bordered" {...register("buyerPhone", { required: true })} />
 
 
                         <input name="location" type="text" placeholder="Place You want to meet" className="input w-full input-bordered" {...register("meetingLocation", { required: true })} />
@@ -67,24 +67,3 @@ const BookingModal = ({ selectedProduct, setSelectedProduct }) => {
 };
 
 export default BookingModal;
-
-
-
-{/* <h3 className="text-lg font-bold">{carName}</h3>
-                    <p>seller: {sellerEmail}</p>
-                    <form onClick={handleSubmit(handleBooking)} className='grid grid-cols-1 gap-3 mt-4'>
-
-                        <input type="text" disabled value={`$${resalePrice}`} className="input w-full input-bordered " />
-
-                        <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
-
-                        <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
-
-                        <input name="phone" type="number" placeholder="Your Phone Number" className="input w-full input-bordered" {...register("buyerPhone", { required: true })} />
-
-                        <input name="location" type="text" placeholder="Place You want to meet" className="input w-full input-bordered" {...register("meetingLocation", { required: true })} />
-
-                        <br />
-                        <Button>Submit</Button>
-                    </form>
-                    <label htmlFor="my-modal" className="btn btn-error absolute top-4 right-4 rounded-full h-12 w-12 text-xl">X</label> */}

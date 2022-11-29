@@ -55,20 +55,20 @@ const Signup = () => {
                     <label className="label">
                         <span className="label-text">Full Name</span>
                     </label>
-                    <input name='name' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("name", { required: true })} />
+                    <input name='name' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("name")} required />
                 </div>
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name='email' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("email", { required: true })} />
+                    <input name='email' type="text" placeholder="Type here" className="input input-bordered input-primary w-full" {...register("email")} required />
                 </div>
 
                 <div className="form-control w-full my-2">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name='password' type={`${passwordShown ? 'text' : 'password'}`} placeholder="Type here" className="input input-bordered input-primary w-full" {...register("password", { required: true })} />
+                    <input name='password' type={`${passwordShown ? 'text' : 'password'}`} placeholder="Type here" className="input input-bordered input-primary w-full" {...register("password")} required />
                     <label className="label">
                         <span className="label-text-alt flex items-center">
                             <input onChange={showPassword} id='showPassword' type="checkbox" className="checkbox" />
@@ -83,10 +83,8 @@ const Signup = () => {
                 <div className='flex justify-around mb-4 border border-1 border-primary py-1 rounded-lg'>
                     <label className="flex items-center label">
                         <span htmlFor="buyer" className="mr-2">Buyer</span>
-                        <input id='buyer' type="radio" name="role" className="radio checked:bg-primary" checked value="buyer"
-                            {...register("role", {
-                                required: "Please select your role"
-                            })} />
+                        <input id='buyer' type="radio" name="role" className="radio checked:bg-primary" value="buyer"
+                            {...register("role")} required />
                     </label>
                     <label className="flex items-center label">
                         <span htmlFor="seller" className="mr-2">Seller</span>

@@ -84,7 +84,7 @@ const MyProducts = () => {
         </div>
     }
     return (
-        <div>
+        <div className='mb-60'>
             <h2 className='text-center my-8 text-3xl font-semibold'>My Products</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -112,7 +112,7 @@ const MyProducts = () => {
                                         {product?.postedDate}
                                     </td>
                                     <td>{product.status}</td>
-                                    <th>
+                                    <td>
                                         {
                                             product.status === 'advertised' ? <button onClick={() => stopAdvertise(product._id, product.carName)} className="btn btn-primary text-white btn-xs">
                                                 Stop Advertise
@@ -123,7 +123,7 @@ const MyProducts = () => {
                                         }
 
                                         <button onClick={() => deleteProduct(product._id, product.carName)} className="btn btn-error ml-2 text-white btn-xs">X</button>
-                                    </th>
+                                    </td>
                                 </tr>
                             )
                         }

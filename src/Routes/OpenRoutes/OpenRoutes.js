@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layouts/DashboardLayout/DashboardLayout";
 import MainLayout from "../../Layouts/MainLayout/MainLayout";
@@ -6,7 +5,7 @@ import Blogs from "../../Pages/Blogs/Blogs";
 import CategoryPage from "../../Pages/CategoryPage/CategoryPage";
 import AllBuyers from "../../Pages/Dashboard/AdminPages/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AdminPages/AllSellers";
-import ReportedItems from "../../Pages/Dashboard/AdminPages/ReportedItems";
+import AllUsers from "../../Pages/Dashboard/AdminPages/AllUsers";
 import MyOrders from "../../Pages/Dashboard/BuyerPages/MyOrders";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellerPages/AddProduct";
@@ -77,8 +76,8 @@ const router = createBrowserRouter([
                 element: <AdminRoutes><AllSellers></AllSellers></AdminRoutes>
             },
             {
-                path: '/dashboard/ReportedItems',
-                element: <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
+                path: '/dashboard/allUsers',
+                element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             },
         ]
     }
