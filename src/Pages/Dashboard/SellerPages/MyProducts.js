@@ -35,6 +35,24 @@ const MyProducts = () => {
         }
     }
 
+    const stopAdvertise = (productId, productName) => {
+        const confirmStopAdvertise = window.confirm(`Confirm Advertise on ${productName}`);
+        if (confirmStopAdvertise) {
+            fetch(`http://localhost:5000/products/stopads/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success(`${productName}is not advertised anymore.`)
+                    }
+                })
+        }
+    }
+
     const deleteProduct = (productId, productName) => {
         const confirmDelete = window.confirm(`Do You Want to delete ${productName}?`);
         if (confirmDelete) {
@@ -95,9 +113,15 @@ const MyProducts = () => {
                                     </td>
                                     <td>{product.status}</td>
                                     <th>
-                                        <button onClick={() => setAdvertise(product._id, product.carName)} className="btn btn-primary text-white btn-xs" disabled={`${product.status === 'advertised' ? ' ' : ''}`} >
-                                            {product.status === 'advertised' ? 'Advertised' : 'Advertise'}
-                                        </button>
+                                        {
+                                            product.status === 'advertised' ? <button onClick={() => stopAdvertise(product._id, product.carName)} className="btn btn-primary text-white btn-xs">
+                                                Stop Advertise
+                                            </button>
+                                                : <button onClick={() => setAdvertise(product._id, product.carName)} className="btn btn-primary text-white btn-xs">
+                                                    Advertise
+                                                </button>
+                                        }
+
                                         <button onClick={() => deleteProduct(product._id, product.carName)} className="btn btn-error ml-2 text-white btn-xs">X</button>
                                     </th>
                                 </tr>

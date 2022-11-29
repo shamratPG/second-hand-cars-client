@@ -4,7 +4,7 @@ import React from 'react';
 
 const ProductCard = ({ product, setSelectedProduct }) => {
 
-    const { image, sellerLocation, carName, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
+    const { _id, image, sellerLocation, carName, originalPrice, resalePrice, year, postedDate, sellerEmail, description } = product;
 
 
     const date = new Date();
@@ -24,7 +24,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
     }
 
     return (
-        <div className="grid grid-cols-5 gap-6 border shadow-lg rounded">
+        <div id={_id} className="grid grid-cols-5 gap-6 border shadow-lg rounded">
             <div className='col-span-5 md:col-span-2'>
                 <img className='w-full h-full' src={image} alt="Movie" />
             </div>
