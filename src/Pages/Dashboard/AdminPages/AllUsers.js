@@ -5,7 +5,7 @@ const AllUsers = () => {
     const { isLoading, data: allUsers = [] } = useQuery({
         queryKey: ["users"],
         queryFn: () =>
-            fetch(`http://localhost:5000/users`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/users`).then(res =>
                 res.json()
             )
     })

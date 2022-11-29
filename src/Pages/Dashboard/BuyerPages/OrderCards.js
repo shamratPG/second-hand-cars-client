@@ -10,7 +10,7 @@ const OrderCards = ({ order }) => {
     const { data: product = [] } = useQuery({
         queryKey: ["product"],
         queryFn: () =>
-            fetch(`http://localhost:5000/product/${productId}`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/product/${productId}`).then(res =>
                 res.json()
             )
     })

@@ -5,7 +5,7 @@ const useRole = email => {
     const [isRoleLoading, setIsRoleLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/${email}`)
+            fetch(`https://second-hand-server-iota.vercel.app/users/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setRole(data.role);

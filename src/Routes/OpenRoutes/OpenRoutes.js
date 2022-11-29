@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:categoryId',
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/products/?categoryId=${params.categoryId}`)
+                    return fetch(`https://second-hand-server-iota.vercel.app/products/?categoryId=${params.categoryId}`)
                 },
                 element: <PrivateRoute><CategoryPage></CategoryPage></PrivateRoute>,
             },

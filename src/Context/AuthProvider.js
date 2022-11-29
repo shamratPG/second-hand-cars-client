@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
     //Sending User data to DATABASE
     const saveUserDb = (name, email, role) => {
         const newUser = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://second-hand-server-iota.vercel.app/users', {
             method: 'POST',
             headers: { "content-type": 'application/json' },
             body: JSON.stringify(newUser)

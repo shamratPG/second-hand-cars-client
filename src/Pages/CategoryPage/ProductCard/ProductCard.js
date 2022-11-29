@@ -13,7 +13,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
     const { isLoading, data: sellerData = [] } = useQuery({
         queryKey: ["users", sellerEmail],
         queryFn: () =>
-            fetch(`http://localhost:5000/users/${sellerEmail}`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/users/${sellerEmail}`).then(res =>
                 res.json()
             )
     })

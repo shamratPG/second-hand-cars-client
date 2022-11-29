@@ -16,7 +16,7 @@ const BookingModal = ({ selectedProduct }) => {
     const handleBooking = data => {
         const bookingInfo = { productId: _id, buyerEmail: user.email, buyerPhone: data.buyerPhone, meetingLocation: data.meetingLocation };
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://second-hand-server-iota.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

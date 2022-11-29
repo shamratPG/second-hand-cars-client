@@ -11,7 +11,7 @@ const MyProducts = () => {
     const { isLoading, data: products = [] } = useQuery({
         queryKey: [user.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/products/seller/${user.email}`)
+            fetch(`https://second-hand-server-iota.vercel.app/products/seller/${user.email}`)
                 .then(res =>
                     res.json()
                 )
@@ -20,7 +20,7 @@ const MyProducts = () => {
     const setAdvertise = (productId, productName) => {
         const confirmAdvertise = window.confirm(`Confirm Advertise on ${productName}`);
         if (confirmAdvertise) {
-            fetch(`http://localhost:5000/products/${productId}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const MyProducts = () => {
     const stopAdvertise = (productId, productName) => {
         const confirmStopAdvertise = window.confirm(`Confirm Advertise on ${productName}`);
         if (confirmStopAdvertise) {
-            fetch(`http://localhost:5000/products/stopads/${productId}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/products/stopads/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ const MyProducts = () => {
     const deleteProduct = (productId, productName) => {
         const confirmDelete = window.confirm(`Do You Want to delete ${productName}?`);
         if (confirmDelete) {
-            fetch(`http://localhost:5000/products/${productId}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/products/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

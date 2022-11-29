@@ -8,7 +8,7 @@ const AllSellers = () => {
     const verifyUser = (id, name) => {
         const confirmVerify = window.confirm(`Do you want to verify ${name}`);
         if (confirmVerify) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/users/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const AllSellers = () => {
     const deleteUser = (id, name) => {
         const confirmDelete = window.confirm(`Do you want to delete ${name}`);
         if (confirmDelete) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const AllSellers = () => {
     const makeAdmin = (id, name) => {
         const confirmMakeAdmin = window.confirm(`Do you want to make ${name} an ADMIN`);
         if (confirmMakeAdmin) {
-            fetch(`http://localhost:5000/users/admin/${id}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/users/admin/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const AllSellers = () => {
     const { isLoading, data: allSellers = [] } = useQuery({
         queryKey: ["users", "seller"],
         queryFn: () =>
-            fetch(`http://localhost:5000/users/seller`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/users/seller`).then(res =>
                 res.json()
             )
     })

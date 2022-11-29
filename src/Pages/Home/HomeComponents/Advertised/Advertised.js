@@ -6,7 +6,7 @@ const Advertised = () => {
     const { data: advertisedItems = [] } = useQuery({
         queryKey: ["products", "ads"],
         queryFn: () =>
-            fetch(`http://localhost:5000/products/ads`)
+            fetch(`https://second-hand-server-iota.vercel.app/products/ads`)
                 .then(res =>
                     res.json()
                 )

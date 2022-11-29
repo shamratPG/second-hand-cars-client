@@ -10,7 +10,7 @@ const MyOrders = () => {
     const { isLoading, data: orders = [] } = useQuery({
         queryKey: ["users"],
         queryFn: () =>
-            fetch(`http://localhost:5000/bookings/${user.email}`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/bookings/${user.email}`).then(res =>
                 res.json()
             )
     })

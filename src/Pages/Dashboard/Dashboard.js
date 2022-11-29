@@ -7,7 +7,7 @@ const Dashboard = () => {
     const [userDbInfo, setUserDbInfo] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://second-hand-server-iota.vercel.app/users/${user.email}`)
             .then(res => res.json())
             .then((data) => {
                 setUserDbInfo(data);

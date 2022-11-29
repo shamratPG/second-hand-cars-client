@@ -9,7 +9,7 @@ const AllBuyers = () => {
     const deleteUser = (id, name) => {
         const confirmDelete = window.confirm(`Do you want to delete ${name}`);
         if (confirmDelete) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const AllBuyers = () => {
     const makeAdmin = (id, name) => {
         const confirmMakeAdmin = window.confirm(`Do you want to make ${name} an ADMIN`);
         if (confirmMakeAdmin) {
-            fetch(`http://localhost:5000/users/admin/${id}`, {
+            fetch(`https://second-hand-server-iota.vercel.app/users/admin/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const AllBuyers = () => {
     const { isLoading, data: allBuyers = [] } = useQuery({
         queryKey: ["users", "buyer"],
         queryFn: () =>
-            fetch(`http://localhost:5000/users/buyer`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/users/buyer`).then(res =>
                 res.json()
             )
     })

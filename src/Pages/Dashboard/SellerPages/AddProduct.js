@@ -31,7 +31,7 @@ const AddProduct = () => {
                     const productData = { ...data, sellerEmail: user.email, status: 'unsold', postedDate: format(date, 'PP') }
 
                     //Save Product info in db
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://second-hand-server-iota.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

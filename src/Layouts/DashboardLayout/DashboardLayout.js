@@ -28,7 +28,7 @@ const DashboardLayout = () => {
     const { isLoading, data: userInfo = [] } = useQuery({
         queryKey: ["products", user.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/users/${user.email}`).then(res =>
+            fetch(`https://second-hand-server-iota.vercel.app/users/${user.email}`).then(res =>
                 res.json()
             )
     })
@@ -39,7 +39,7 @@ const DashboardLayout = () => {
     }
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${user?.email}`)
+    //     fetch(`https://second-hand-server-iota.vercel.app/users/${user?.email}`)
     //         .then(res => res.json())
     //         .then((data) => {
     //             setUserInfo(data)
