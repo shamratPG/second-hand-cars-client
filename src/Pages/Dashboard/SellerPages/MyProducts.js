@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -10,11 +11,49 @@ const MyProducts = () => {
     const { isLoading, data: products = [] } = useQuery({
         queryKey: [user.email],
         queryFn: () =>
-            fetch(`http://localhost:5000/products/${user.email}`)
+            fetch(`http://localhost:5000/products/seller/${user.email}`)
                 .then(res =>
                     res.json()
                 )
     })
+
+    const setAdvertise = (productId, productName) => {
+        const confirmAdvertise = window.confirm(`Confirm Advertise on ${productName}`);
+        if (confirmAdvertise) {
+            fetch(`http://localhost:5000/products/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success(`${productName}is successfully advertised.`)
+                    }
+                })
+        }
+    }
+
+    const deleteProduct = (productId, productName) => {
+        const confirmDelete = window.confirm(`Do You Want to delete ${productName}?`);
+        if (confirmDelete) {
+            fetch(`http://localhost:5000/products/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success(`${productName}is successfully Deleted.`)
+                    }
+                })
+        }
+    }
+
+
     if (isLoading) {
         return <div className='h-[90vh] flex justify-center items-center'>
             <progress className="progress w-56"></progress>
@@ -56,8 +95,10 @@ const MyProducts = () => {
                                     </td>
                                     <td>{product.status}</td>
                                     <th>
-                                        <button className="btn btn-primary text-white btn-xs">Advertise</button>
-                                        <button className="btn btn-error ml-2 text-white btn-xs">X</button>
+                                        <button onClick={() => setAdvertise(product._id, product.carName)} className="btn btn-primary text-white btn-xs" disabled={`${product.status === 'advertised' ? ' ' : ''}`} >
+                                            {product.status === 'advertised' ? 'Advertised' : 'Advertise'}
+                                        </button>
+                                        <button onClick={() => deleteProduct(product._id, product.carName)} className="btn btn-error ml-2 text-white btn-xs">X</button>
                                     </th>
                                 </tr>
                             )
