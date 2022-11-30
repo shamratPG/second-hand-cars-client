@@ -1,8 +1,3 @@
-LiveSite: https://second-hand-cars-9aedb.web.app
-
-Server: https://second-hand-server-iota.vercel.app/
-
-
 # Second-Hand Cars
 
 ## Table of contents
@@ -21,7 +16,7 @@ Final Assignment for programming hero. A long and fun project. I have learned a 
 
 ### Screenshot
 
-![](public/logo192.png)
+![](public/second-hand-cars.png)
 
 
 ### Links & Info
@@ -29,6 +24,7 @@ Final Assignment for programming hero. A long and fun project. I have learned a 
 - [Solution Client side](https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-shamratPG)
 - [Solution Server side](https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-shamratPG)
 - [Live Site](https://second-hand-cars-9aedb.web.app)
+- [Live Server](https://second-hand-server-iota.vercel.app/)
 
 - Here is an ADMIN login info for demo purpose.
 - Admin Email: cristiano@ronaldo.com
