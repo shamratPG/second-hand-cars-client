@@ -27,8 +27,8 @@ Final Assignment for programming hero. A long and fun project. I have learned a 
 - [Live Server](https://second-hand-server-iota.vercel.app/)
 
 - Here is an ADMIN login info for demo purpose.
-- Admin Email: cristiano@ronaldo.com
-- Admin Password: ronaldo123
+-- Admin Email: cristiano@ronaldo.com
+-- Admin Password: ronaldo123
 
 
 ## Built with
