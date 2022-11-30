@@ -10,7 +10,7 @@ const AdvertisedItem = ({ product }) => {
             <div className="card-body">
                 <div className='flex'>
                     <h2 className="card-title">{carName}</h2>
-                    <p className='font-bold absolute right-4'><span className='text-xl text-secondary'>${resalePrice}</span></p>
+                    <p className='font-bold absolute right-4'><span className='text-xl text-neutral'>$ <span className='text-secondary'>{resalePrice}</span></span></p>
                 </div>
                 <div className="card-actions justify-end">
                     <button className="btn bg-gradient-to-r from-primary to-accent  shadow-lg w-12 h-12 rounded-full text-white"><Link to={`/category/${categoryId}/#${_id}`}><FaArrowRight className='text-xl'></FaArrowRight></Link></button>

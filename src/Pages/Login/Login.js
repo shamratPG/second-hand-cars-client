@@ -41,7 +41,7 @@ const Login = () => {
         setPasswordShown(!passwordShown);
     }
     return (
-        <div className='flex justify-center items-center container mx-auto max-w-sm'>
+        <div className='flex justify-center items-center container mx-auto max-w-sm p-2 mt-10 mb-20'>
             <form onSubmit={handleSubmit(handleLogin)} className='w-full border border-1 p-6 shadow-lg rounded my-8 lg:my-24'>
                 <h2 className="text-3xl mb-4">Log In</h2>
                 <div className="form-control w-full">

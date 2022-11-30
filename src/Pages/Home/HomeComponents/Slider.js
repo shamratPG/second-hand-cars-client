@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img1 from '../../../Assets/images/slider-image/img-1.jpg'
 import img2 from '../../../Assets/images/slider-image/img-2.jpg'
 import img3 from '../../../Assets/images/slider-image/img-3.jpg'
@@ -21,7 +22,7 @@ const Slider = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold text-white">Find Your Match</h1>
                     <p className="mb-5 uppercase text-base-200">Welcome, we provide the platform to find the right buyer or seller for your cars</p>
-                    <Button>Join Now</Button>
+                    <Button><Link to='/signup'>Join Now</Link></Button>
                 </div>
             </div>
         </div>

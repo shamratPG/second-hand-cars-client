@@ -4,7 +4,7 @@ const Faqs = () => {
     return (
         <div className='max-w-[1175px] mx-auto mb-20'>
             <h2 className='text-3xl mb-4 pl-2'>Used car buying related FAQs</h2>
-            <hr className='h-1 bg-gradient-to-r from-primary to-secondary max-w-sm ml-1' />
+            <hr className='h-1 bg-gradient-to-r from-primary to-secondary max-w-sm m-1' />
 
 
             <div className="collapse collapse-plus border shadow-lg m-4 rounded ">

@@ -8,16 +8,20 @@ const Header = () => {
     const userLogOut = () => logOut().then(() => { }).catch(error => console.error(error))
     const menu = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
-        <li className='font-semibold'><Link to='/blogs'>Blog</Link></li>
+        <li className='font-semibold'><Link to='/blogs'>Blogs</Link></li>
         {
             user ?
                 <>
                     <li className='font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
                     <li className='font-semibold'><Link onClick={userLogOut}>Log Out</Link></li>
-                    <Link className='font-semibold flex items-center text-primary pl-3' to="/dashboard">
-                        <FaUser></FaUser>
-                        <p className='pl-1'>{user.displayName}</p>
-                    </Link>
+                    <li>
+                        <Link className='font-semibold flex items-center pl-3' to="/dashboard">
+                            <p className='pl-1'>{user.displayName}</p>
+                            <span>
+                                <FaUser className='text-primary'></FaUser>
+                            </span>
+                        </Link>
+                    </li>
                 </>
                 :
                 <>

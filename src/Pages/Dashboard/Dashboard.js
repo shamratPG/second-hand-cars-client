@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     return (
 
-        <div className='flex justify-center items-center container mx-auto max-w-sm'>
+        <div className='flex justify-center items-center container mx-auto max-w-sm p-2'>
             <form className='w-full border border-1 p-6 shadow-lg rounded my-8'>
                 <h2 className="text-3xl mb-4">User Info</h2>
                 <div className="form-control w-full">

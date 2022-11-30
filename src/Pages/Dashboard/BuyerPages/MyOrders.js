@@ -14,7 +14,6 @@ const MyOrders = () => {
                 res.json()
             )
     })
-    console.log(orders)
 
     if (isLoading) {
         return <div className='h-[100vh] flex justify-center items-center'>

@@ -25,9 +25,9 @@ const CategoryPage = () => {
 
 
     return (
-        <div className='max-w-[1175px] mx-auto'>
+        <div className='max-w-[1175px] mx-auto mt-10 mb-20'>
             <h2 className="text-3xl text-center my-4">All Cars Under Category: <span className="text-secondary font-semibold">{categoryName}</span> </h2>
-            <div className="grid grid-cols-1 gap-6 mb-16">
+            <div className="grid grid-cols-1 gap-10 mt-10 mb-16 p-1">
                 {
                     products.map(product => <ProductCard key={product._id} product={product} setSelectedProduct={setSelectedProduct}></ProductCard>)
                 }
