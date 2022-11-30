@@ -18,8 +18,8 @@ const Blogs = () => {
     }
 
     return (
-        <div className='max-w-[1175px] mx-auto'>
-            <h2 className="text-3xl text-center my-4">All Blogs</h2>
+        <div className='max-w-[1175px] mx-auto mt-16 mb-20'>
+            <h2 className="text-4xl font-semibold text-center my-8">All Blogs</h2>
             <div className='p-1 grid grid-cols-1'>
                 {
                     blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
