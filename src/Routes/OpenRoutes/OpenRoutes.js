@@ -12,6 +12,7 @@ import AddProduct from "../../Pages/Dashboard/SellerPages/AddProduct";
 import MyProducts from "../../Pages/Dashboard/SellerPages/MyProducts";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoutes from "../PrivateRoutes/AdminRoutes";
 import PrivateRoute from "../PrivateRoutes/PrivateRoutes";
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
                 element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             },
         ]
+    },
+    {
+        path: '/*',
+        element: <PageNotFound></PageNotFound>
     }
 ])
 export default router;

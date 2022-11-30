@@ -78,16 +78,16 @@ const Signup = () => {
                 </div>
 
                 <label className="label">
-                    <span className="label-text">Select what your role would be:</span>
+                    <span className="label-text">Do You Want to Buy/Sell?</span>
                 </label>
                 <div className='flex justify-around mb-4 border border-1 border-primary py-1 rounded-lg'>
                     <label className="flex items-center label">
-                        <span htmlFor="buyer" className="mr-2">Buyer</span>
+                        <span htmlFor="buyer" className="mr-2">Buy</span>
                         <input id='buyer' type="radio" name="role" className="radio checked:bg-primary" value="buyer"
-                            {...register("role")} required />
+                            {...register("role")} checked />
                     </label>
                     <label className="flex items-center label">
-                        <span htmlFor="seller" className="mr-2">Seller</span>
+                        <span htmlFor="seller" className="mr-2">Sell</span>
                         <input id='seller' type="radio" name="role" className="radio checked:bg-accent" value="seller"
                             {...register("role")} />
                     </label>

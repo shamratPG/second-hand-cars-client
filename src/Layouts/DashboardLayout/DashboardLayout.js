@@ -11,6 +11,7 @@ const DashboardLayout = () => {
     const sellerMenu = <>
         <li><Link to="/dashboard/myProducts">My Products</Link></li>
         <li><Link to="/dashboard/addProduct">Add A Product</Link></li>
+        <li><Link to="/dashboard/myOrders" >My Bookings</Link></li>
     </>
     const buyerMenu = <>
         <li><Link to="/dashboard/myOrders">My Orders</Link></li>
@@ -19,6 +20,7 @@ const DashboardLayout = () => {
         <li><Link to="/dashboard/allBuyer">All Buyer</Link></li>
         <li><Link to="/dashboard/allSeller">All Seller</Link></li>
         <li><Link to="/dashboard/allUsers">All Users</Link></li>
+        <li><Link to="/dashboard/myOrders">My Bookings</Link></li>
     </>
 
     let menu = buyerMenu;
